@@ -1,5 +1,4 @@
 import React from 'react';
-// import './App.css';
 import * as ReactDOM from "react-dom";
 import 'antd/dist/antd.css';
 import {
@@ -14,7 +13,7 @@ import {
   Rate,
   Checkbox,
   Row,
-  Col,
+  Col
 } from 'antd';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 const { Option } = Select;
