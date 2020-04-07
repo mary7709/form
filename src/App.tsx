@@ -61,7 +61,7 @@ const Demo = () => {
         </Select>
       </Form.Item>
 
-      <Form.Item
+      {/* <Form.Item
         name="select-multiple"
         label="Select[multiple]"
         rules={[{ required: true, message: 'Please select your favourite colors!', type: 'array' }]}
@@ -71,7 +71,7 @@ const Demo = () => {
           <Option value="green">Green</Option>
           <Option value="blue">Blue</Option>
         </Select>
-      </Form.Item>
+      </Form.Item> */}
 
       <Form.Item label="InputNumber">
         <Form.Item name="input-number" noStyle>
