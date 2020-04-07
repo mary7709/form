@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import * as ReactDOM from "react-dom";
 import 'antd/dist/antd.css';
 import {
@@ -13,7 +13,9 @@ import {
   Rate,
   Checkbox,
   Row,
-  Col
+  Col,
+  Input,
+  DatePicker
 } from 'antd';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 const { Option } = Select;
@@ -23,7 +25,7 @@ const formItemLayout = {
   wrapperCol: { span: 14 },
 };
 
-const normFile = (e:any) => {
+const normFile = (e: any) => {
   console.log('Upload event:', e);
   if (Array.isArray(e)) {
     return e;
@@ -32,20 +34,46 @@ const normFile = (e:any) => {
 };
 
 const Demo = () => {
-  const onFinish = (values:any) => {
+  const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
   }
+  const onFinishFailed = (err: any) => {
+    console.log('err: ', err);
+
+  }
+  
   return (
     <Form
       name="validate_other"
       {...formItemLayout}
       onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+      layout="horizontal"
       initialValues={{
         ['input-number']: 3,
         ['checkbox-group']: ['A', 'B'],
         rate: 3.5,
       }}
     >
+   
+
+      <Form.Item
+        label="Username"
+        name="username"
+        rules={[{ required: true, message: 'Please input your username!' }]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="Password"
+        name="password"
+        rules={[{ required: true, message: 'Please input your password!' }]}
+      >
+        <Input.Password />
+      </Form.Item>
+
+
       <Form.Item label="Plain Text">
         <span className="ant-form-text">China</span>
       </Form.Item>
@@ -179,12 +207,17 @@ const Demo = () => {
           </Upload.Dragger>
         </Form.Item>
       </Form.Item>
-
+      <Form.Item label="DatePicker">
+          <DatePicker />
+        </Form.Item>
       <Form.Item wrapperCol={{ span: 12, offset: 6 }}>
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>
+     
+ 
+    
     </Form>
   );
 }
